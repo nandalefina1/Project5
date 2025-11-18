@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuangan Saku SMA</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Keuangan Saku Harian</h1>
+        
+        <div class="saldo-box">
+            <h2>SALDO SAAT INI:</h2>
+            <p id="saldo">Rp 0</p>
+        </div>
+
+        <div class="form-container">
+            <h3>Catat Transaksi Baru</h3>
+            <input type="number" id="jumlah" placeholder="Jumlah Uang (cth: 50000)" required>
+            <input type="text" id="deskripsi" placeholder="Keterangan (cth: Jajan Bakso)" required>
+            
+            <div class="button-group">
+                <button onclick="catatTransaksi('Pemasukan')" class="btn-pemasukan">➕ Pemasukan</button>
+                <button onclick="catatTransaksi('Pengeluaran')" class="btn-pengeluaran">➖ Pengeluaran</button>
+            </div>
+        </div>
+
+        <div class="riwayat-container">
+            <h3>Riwayat Transaksi</h3>
+            <ul id="riwayat-list">
+                </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
