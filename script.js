@@ -1,4 +1,4 @@
-let riwayatTransaksi = []; // Array untuk menyimpan semua transaksi (seperti list Python)
+let riwayatTransaksi = [];
 
 // Fungsi untuk memformat angka menjadi format Rupiah
 function formatRupiah(angka) {
@@ -17,7 +17,6 @@ function catatTransaksi(jenis) {
     const jumlah = parseFloat(jumlahInput.value);
     const deskripsi = deskripsiInput.value.trim();
 
-    // Validasi Input
     if (isNaN(jumlah) || jumlah <= 0) {
         alert("Jumlah harus diisi dengan angka positif.");
         return;
@@ -27,7 +26,6 @@ function catatTransaksi(jenis) {
         return;
     }
 
-    // Tambahkan transaksi ke array
     riwayatTransaksi.push({
         jenis: jenis,
         jumlah: jumlah,
@@ -48,7 +46,7 @@ function updateUI() {
     const riwayatList = document.getElementById('riwayat-list');
     riwayatList.innerHTML = ''; // Kosongkan riwayat yang lama
 
-    // 1. Hitung Saldo
+    // 1. Hitung Saldo dan Buat Elemen Riwayat
     riwayatTransaksi.forEach(t => {
         if (t.jenis === 'Pemasukan') {
             saldo += t.jumlah;
@@ -56,10 +54,8 @@ function updateUI() {
             saldo -= t.jumlah;
         }
 
-        // 2. Buat Elemen Riwayat
         const listItem = document.createElement('li');
         
-        // Tentukan kelas CSS dan simbol berdasarkan jenis
         const kelas = t.jenis === 'Pemasukan' ? 'pemasukan' : 'pengeluaran';
         const simbol = t.jenis === 'Pemasukan' ? '➕' : '➖';
 
@@ -70,7 +66,7 @@ function updateUI() {
         riwayatList.appendChild(listItem);
     });
 
-    // 3. Tampilkan Saldo Akhir
+    // 2. Tampilkan Saldo Akhir
     document.getElementById('saldo').textContent = formatRupiah(saldo);
 }
 
